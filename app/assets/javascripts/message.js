@@ -1,44 +1,24 @@
-$(function(){ 
-  $(document).on('turbolinks:load', function () {
+$(document).on('turbolinks:load', function () {
     function buildHTML(message){
-      if ( message.image ) {
-        var html =
-          `<div class="message" data-message-id=${message.id}>
-            <div class="upper-message">
-              <div class="upper-message__user-name">
-                ${message.user_name}
-              </div>
-              <div class="upper-message__date">
-                ${message.date}
-              </div>
-            </div>
-              <div class="lower-message">
-              <p class="lower-message__content">
-                ${message.content}
-              </p>
-            </div>
-          <img src=${message.image} >
-        </div>`
-      return html;
-    } else {
-      var html =
-        `<div class="message" data-message-id=${message.id}>
-          <div class="upper-message">
-            <div class="upper-message__user-name">
-              ${message.user_name}
-            </div>
-            <div class="upper-message__date">
-              ${message.date}
-            </div>
-          </div>
-          <div class="lower-message">
-            <p class="lower-message__content">
-              ${message.content}
-            </p>
-          </div>
-        </div>`
-      return html;
-      };
+      var content = message.content ? `${ message.content }` : "";
+      var img =  message.image ? `<img src= ${ message.image }` : "";
+      var html =`<div class="message" data-message-id=${message.id}>
+                  <div class="upper-message">
+                    <div class="upper-message__user-name">
+                      ${message.user_name}
+                    </div>
+                  <div class="upper-message__date">
+                      ${message.date}
+                  </div>
+                </div>
+                  <div class="lower-message">
+                    <p class="lower-message__content">
+                      ${content}
+                    </p>
+                  </div>
+                      ${img}
+                  </div>`
+        return html;
     }
 $('form').on('submit', function(e){
   e.preventDefault();
@@ -63,5 +43,4 @@ $('form').on('submit', function(e){
   });
    return false;
     })
-  })
-});
+  });
