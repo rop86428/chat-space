@@ -20,7 +20,7 @@ $(document).on('turbolinks:load', function () {
                   </div>`
         return html;
     }
-$('form').on('submit', function(e){
+$('.form__submit').on('submit', function(e){
   e.preventDefault();
   var formData = new FormData(this);
   var url = $(this).attr('action')
